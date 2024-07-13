@@ -1,0 +1,26 @@
+{% extends "homePage.html" %}
+
+{% block titulo %}
+<title> Perfil - {{usuario}}</title>
+{% endblock %}
+
+{% block body %}
+
+{% include "nav.html" %}
+
+<h1> Seja bem vindo, {{usuario.username}}!</h1>
+<a href="{{url_for('logout')}}">Sair</a>
+
+{% for img in usuario.photos%}
+<img src="{{ url_for('static', filename='posts/{}'.format(img.image)) }}">
+{% endfor%}
+
+{% if form %}
+<form method="post" enctype="multipart/form-data">
+    {{form.csrf_token}}
+    {{form.foto()}}
+    {{form.confirm_btn()}}
+</form>
+{% endif %}
+
+{% endblock %}

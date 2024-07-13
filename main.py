@@ -1,8 +1,4 @@
-from flask import Flask
-app = Flask(__name__)
+from fakePintrest import app
 
-@app.route("/")
-def homePage():
-    return "<p>Hello, World!</p>"
-
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
